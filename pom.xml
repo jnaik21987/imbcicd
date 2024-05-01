@@ -6,7 +6,7 @@
 
 	<groupId>041d071f-0c70-4a8e-b9aa-d1fac788bd3a</groupId>
 	<artifactId>process-api-imb</artifactId>
-	<version>1.0.12</version>
+	<version>1.0.13</version>
 	<packaging>mule-application</packaging>
 
 	<name>process-api-imb</name>
