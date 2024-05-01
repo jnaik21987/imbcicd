@@ -32,4 +32,4 @@ jobs:
 
       # Deploy the artefact from exchange
       - name: Deploy the artefact from exchange
-      - run: mvn clean deploy -DmuleDeploy
+        run: mvn clean deploy -DmuleDeploy
