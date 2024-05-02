@@ -25,6 +25,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout code repository
         uses: actions/checkout@v4
+      # Cache the dependencies
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+              java-version: 11
+      # Step that does that actual cache save and restore
+      - uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
 
       # Build and upload the artefact to exchange
       - name: Build artefact and upload to exchange
@@ -32,4 +44,4 @@ jobs:
 
       # Deploy the artefact from exchange
       - name: Deploy the artefact from exchange
-      - run: mvn clean deploy -DmuleDeploy
+        run: mvn clean deploy -DmuleDeploy -s .maven/settings.xml
